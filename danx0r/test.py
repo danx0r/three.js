@@ -1,4 +1,5 @@
-plat = "pyscript"
+# plat = "pyscript"
+plat = "brython"
 
 if plat == "pyscript":
     from pyodide import create_proxy
