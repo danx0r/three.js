@@ -1,6 +1,6 @@
-from browser import document, window
-
-THREE = window.THREE
+from pyodide import create_proxy
+from js import THREE, document, window
+container = document.querySelector('#container');
 
 camera = THREE.PerspectiveCamera.new(70, 1, .01, 10)
 camera.position.z = 1.5
@@ -13,12 +13,11 @@ scene.add(mesh)
 renderer = THREE.WebGLRenderer.new()
 renderer.setSize(1000, 800)
 
-document <= renderer.domElement
 renderer.render(scene, camera)
 
 def animate(i):
     # note: three.js includes requestAnimationFrame shim
-    window.requestAnimationFrame(animate)
+    window.requestAnimationFrame(create_proxy(animate))
 
     mesh.rotation.x += 0.01
     mesh.rotation.y += 0.005
@@ -26,3 +25,5 @@ def animate(i):
     renderer.render(scene, camera)
 
 animate(0)
+
+container.append(renderer.domElement)
