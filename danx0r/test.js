@@ -2,11 +2,11 @@ import * as THREE from 'three';
 
 // init
 
-const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
-const scene = new THREE.Scene();
-const renderer = new THREE.WebGLRenderer( { antialias: true } );
-renderer.render( scene, camera );
-document.body.appendChild( renderer.domElement );
+//const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+//const scene = new THREE.Scene();
+//const renderer = new THREE.WebGLRenderer( { antialias: true } );
+//renderer.render( scene, camera );
+//document.body.appendChild( renderer.domElement );
 
 //const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 //const material = new THREE.MeshNormalMaterial();
