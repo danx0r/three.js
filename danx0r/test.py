@@ -1,6 +1,15 @@
-from pyodide import create_proxy
-from js import THREE, document, window
-container = document.querySelector('#container');
+plat = "pyscript"
+
+if plat == "pyscript":
+    from pyodide import create_proxy
+    from js import THREE, document, window
+    container = document.querySelector('#container');
+
+elif plat == "brython":
+    from browser import document, window
+    THREE = window.THREE
+    def create_proxy(p):
+        return p
 
 camera = THREE.PerspectiveCamera.new(70, 1, .01, 10)
 camera.position.z = 1.5
@@ -12,6 +21,9 @@ scene.add(mesh)
 
 renderer = THREE.WebGLRenderer.new()
 renderer.setSize(1000, 800)
+
+if plat == "brython":
+    document <= renderer.domElement
 
 renderer.render(scene, camera)
 
