@@ -2,14 +2,15 @@ def main(THREE, plat, renderer, window, create_proxy):
     camera = THREE.PerspectiveCamera.new(70, 1, .01, 10)
     camera.position.z = 1.5
     scene = THREE.Scene.new()
-    geometry = THREE.CubeGeometry.new(0.1, 0.4, 0.9)
+    geometry = THREE.CylinderGeometry.new(0.03, 0.03, 1)
+    args = {'color': "#888888", 'emissive': "#555555"}
     if plat=="brython":
         #brython wants a dict
-        material = THREE.MeshLambertMaterial.new({'color': "#ffffff", 'emissive': "#555555"})
+        material = THREE.MeshLambertMaterial.new(args)
     else:
         #pyscript expects keywords
-        material = THREE.MeshLambertMaterial.new(color="#ffffff", emissive="#555555")
-        # material = THREE.MeshLambertMaterial.new(**{'color': "#ffffff", 'emissive': "#555555"})
+        # material = THREE.MeshLambertMaterial.new(color="#888888", emissive="#555555")
+        material = THREE.MeshLambertMaterial.new(**args)
     # material.wireframe=True
     mesh = THREE.Mesh.new(geometry, material)
     scene.add(mesh)
@@ -23,7 +24,7 @@ def main(THREE, plat, renderer, window, create_proxy):
         # note: three.js includes requestAnimationFrame shim
         window.requestAnimationFrame(create_proxy(animate))
         mesh.rotation.x += 0.01
-        mesh.rotation.y += 0.005
+        mesh.rotation.z += 0.005
         renderer.render(scene, camera)
 
     animate(0)
