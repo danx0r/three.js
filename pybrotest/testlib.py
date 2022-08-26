@@ -4,9 +4,12 @@ def main(THREE, plat, renderer, window, create_proxy):
     scene = THREE.Scene.new()
     geometry = THREE.CubeGeometry.new(0.1, 0.4, 0.9)
     if plat=="brython":
+        #brython wants a dict
         material = THREE.MeshLambertMaterial.new({'color': "#ffffff", 'emissive': "#555555"})
     else:
-        material = THREE.MeshLambertMaterial.new(emissive="#555555")
+        #pyscript expects keywords
+        material = THREE.MeshLambertMaterial.new(color="#ffffff", emissive="#555555")
+        # material = THREE.MeshLambertMaterial.new(**{'color': "#ffffff", 'emissive': "#555555"})
     # material.wireframe=True
     mesh = THREE.Mesh.new(geometry, material)
     scene.add(mesh)
