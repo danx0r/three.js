@@ -7,7 +7,7 @@ try:
     def create_proxy(p):
         return p
     plat = "brython"
-    main(THREE, renderer, window, create_proxy)
+    main(THREE, plat, renderer, window, create_proxy)
 except:
     from pyodide import create_proxy
     from js import THREE, document, window
@@ -15,4 +15,4 @@ except:
     container = document.querySelector('#container')
     container.append(renderer.domElement)
     plat = "pyscript"
-    main(THREE, renderer, window, create_proxy)
+    main(THREE, plat, renderer, window, create_proxy)
