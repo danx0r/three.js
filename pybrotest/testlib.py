@@ -4,6 +4,7 @@ def main(THREE, renderer, window, create_proxy):
     scene = THREE.Scene.new()
     geometry = THREE.CubeGeometry.new(0.1, 0.4, 0.9)
     material = THREE.MeshNormalMaterial.new({"color": "#ffffff"})
+    # material.wireframe=True
     mesh = THREE.Mesh.new(geometry, material)
     scene.add(mesh)
     renderer.setSize(1000, 800)
