@@ -1,7 +1,7 @@
-from browser import timer
+# from browser import timer
+import asyncio
 
-
-def main(THREE, plat, renderer, window, create_proxy):
+async def main(THREE, plat, renderer, window, create_proxy):
     camera = THREE.PerspectiveCamera.new(70, 1, .01, 10)
     camera.position.z = 1.5
     scene = THREE.Scene.new()
@@ -32,10 +32,7 @@ def main(THREE, plat, renderer, window, create_proxy):
 
     # animate(0)
     renderer.render(scene, camera)
-    # time.sleep(33)
-    def cb():
-        mesh.rotation.x += 1
-        mesh.rotation.z += 2
-        renderer.render(scene, camera)
-
-    timer.set_timeout(cb, 1000)
+    await asyncio.sleep(1)
+    mesh.rotation.x += 1
+    mesh.rotation.z += 2
+    renderer.render(scene, camera)

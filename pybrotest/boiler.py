@@ -1,3 +1,4 @@
+import asyncio
 from testlib import main
 try:
     from browser import document, window
@@ -18,4 +19,4 @@ else:
     renderer = THREE.WebGLRenderer.new()
     container = document.querySelector('#container')
     container.append(renderer.domElement)
-    main(THREE, plat, renderer, window, create_proxy)
+    await main(THREE, plat, renderer, window, create_proxy)
