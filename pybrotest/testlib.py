@@ -1,3 +1,6 @@
+from browser import timer
+
+
 def main(THREE, plat, renderer, window, create_proxy):
     camera = THREE.PerspectiveCamera.new(70, 1, .01, 10)
     camera.position.z = 1.5
@@ -27,4 +30,12 @@ def main(THREE, plat, renderer, window, create_proxy):
         mesh.rotation.z += 0.005
         renderer.render(scene, camera)
 
-    animate(0)
+    # animate(0)
+    renderer.render(scene, camera)
+    # time.sleep(33)
+    def cb():
+        mesh.rotation.x += 1
+        mesh.rotation.z += 2
+        renderer.render(scene, camera)
+
+    timer.set_timeout(cb, 1000)
